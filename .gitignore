@@ -1,5 +1,6 @@
 src/xkb1_lexer.erl
 src/xkb1_parser.erl
+include/xkb1_keydefs.hrl
 
 .rebar3
 _*
