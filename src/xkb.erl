@@ -14,6 +14,7 @@
                       , "Mod5"    => 2#10000000
                       }).
 
+-include_lib("ucd/include/ucd.hrl").
 -include("xkb_keydefs.hrl").
 
 -type keycode()           :: pos_integer().
@@ -279,9 +280,8 @@ keysym_is_lower({Keysym, _})
 keysym_is_lower(_) -> false.
 
 
-%% TODO:
-unicode_is_lower(_) ->
-    false.
+unicode_is_lower(Char) ->
+    ucd:category(Char, 'Ll') orelse ucd:prop_list(Char, other_lowercase).
 
 
 keysym_is_upper({unicode, {char, Char}}) ->
@@ -315,9 +315,8 @@ keysym_is_upper({Keysym, _})
 keysym_is_upper(_) -> false.
 
 
-%% TODO:
-unicode_is_upper(_Code) ->
-    false.
+unicode_is_upper(Char) ->
+    ucd:category(Char, 'Lu') orelse ucd:prop_list(Char, other_uppercase).
 
 
 keysym_is_keypad({Keysym, _}) when is_integer(Keysym) ->
