@@ -343,7 +343,8 @@ type_modifiers(Mod)           -> [Mod].
 
 
 type_level("Level" ++ L) -> list_to_integer(L);
-type_level("level" ++ L) -> list_to_integer(L).
+type_level("level" ++ L) -> list_to_integer(L);
+type_level(L) when is_integer(L) -> L.
 
 
 resolve_type({ModNames, Mappings}) ->
