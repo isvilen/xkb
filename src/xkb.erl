@@ -341,7 +341,7 @@ type_modifiers("none")        -> [];
 type_modifiers({'+', M1, M2}) -> type_modifiers(M1) ++ type_modifiers(M2);
 type_modifiers(Mod)           -> [Mod].
 
-
+type_level(L) when is_integer(L) -> L;
 type_level("Level" ++ L) -> list_to_integer(L);
 type_level("level" ++ L) -> list_to_integer(L).
 
